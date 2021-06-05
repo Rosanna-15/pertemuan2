@@ -47,9 +47,13 @@
                     <td>{{$data->tahun}}</td>
                     <td>{{$data->nama_penerbit}}</td>
                     <td>
-                        <a href="">Edit </a>
+                        <a href="{{ url('buku/' . $data->id . "/edit") }} ">Edit </a>
 |
-                        <a href=""> Hapus</a>
+                        <form action="{{ url('buku/' .$data->id) }}" method="post">
+                        <input type="hidden" name="_method" value="delete">
+                        <button type="submit"></button>
+    
+                        </form>
                     </td>
                 </tr>
 
