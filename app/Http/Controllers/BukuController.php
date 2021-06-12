@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 use App\Models\Buku;
 use Illuminate\Http\Request;
 use PDF;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
+
+
 
 class BukuController extends Controller
 {
@@ -104,4 +108,8 @@ class BukuController extends Controller
     $pdf =PDF::loadview('buku_pdf',['buku'=>$buku]);
     return $pdf->stream();
 }
+    public function export() 
+    {
+    return Excel::download(new BukuExport, 'bukus.xlsx');
+    } 
 }
