@@ -28,6 +28,7 @@
     <div style="overflow-x:auto;">
 
         <a class="tambah" href="{{route( 'buku.create')}}">Tambah Data </a>
+        <a class="tambah" href="{{url( '/buku/pdf')}}"> Print </a>
 
         <table>
             <thead>
@@ -50,8 +51,9 @@
                         <a href="{{ url('buku/' . $data->id . "/edit") }} ">Edit </a>
 |
                         <form action="{{ url('buku/' .$data->id) }}" method="post">
+
                         <input type="hidden" name="_method" value="delete">
-                        <button type="submit"></button>
+                        <button type="submit">Delete</button>
     
                         </form>
                     </td>

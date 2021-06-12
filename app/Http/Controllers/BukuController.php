@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Buku;
 use Illuminate\Http\Request;
+use PDF;
 
 class BukuController extends Controller
 {
@@ -36,11 +37,11 @@ class BukuController extends Controller
     public function store(Request $request)
     {
         Buku::create([
-            'tahun' => $request ->tahun,
-            'nama_penerbit'=> $request ->nama_penerbit,
+            'tahun' => $request->tahun,
+            'nama_penerbit'=> $request->nama_penerbit,
         ]);
 
-        return redirect ('buku');
+        return redirect('buku');
     }
 
     /**
@@ -96,4 +97,11 @@ class BukuController extends Controller
 
         return redirect ('buku');
     }
+
+    public function generate()
+{
+    $buku = \App\Models\Buku::All();
+    $pdf =PDF::loadview('buku_pdf',['buku'=>$buku]);
+    return $pdf->stream();
+}
 }

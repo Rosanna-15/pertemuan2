@@ -16,5 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/buku/pdf', [BukuController::class,'generate']);
 Route::resource('buku',BukuController::class);
+
